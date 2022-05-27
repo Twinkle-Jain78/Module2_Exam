@@ -1,0 +1,68 @@
+1.If 8TB is the available disk space per node (10 disks with 1 TB, 2 disk for operating system etc. were excluded.). Assuming initial data size is 600 TB. How will you estimate the number of data nodes (n)?
+
+solution:->Data Size  = 600TB
+
+           RF=3
+
+           Intermediate =1
+
+           Total Requirement= (3+1)*600=2400TB
+
+           Avaliable Disk size =8TB
+
+           Total no nodes required =2400/8⇒300Nodes
+
+2. You have a directory ProjectPro that has the following files – HadoopTraining.txt, _SparkTraining.txt, #DataScienceTraining.txt, .SalesforceTraining.txt. If you pass the ProjectPro directory to the Hadoop MapReduce jobs, how many files are likely to be processed?
+
+solution:-> Only 2 files will be processed because .SalesforceTraining.txt,_SparkTraining.txt are hidden files.
+
+            Files starting with _ and . are hidden files. 
+            In hadoop hidden files are not directly processed.
+
+
+7)What are the steps followed by the application while running a YARN job when calling a SubmitApplication method?
+
+solution:-> Query→Client M/c→ RM→NameNode→Application Master→ RM(AM Request for Container)---->Conatiner Created—>Once job is finished Container and Resources get terminated and then AM also terminated.
+
+8)Suppose you want to get an HDFS file into a local directory; how would you go about it?
+
+ solution:->Hadoop fs -copyToLocal <HDFS Source> <Local Destination>
+
+            Hadoop fs -get <HDFS Source> <Local Destination>
+
+
+10) What command will you use to copy data from one node in Hadoop to another?
+
+solution:-> hdfs dfs -distcp hdfs://namenodeA/apache_hadoop hdfs://namenodeB/hadoop
+
+            For Block Location command: hadoop fsck <file path> -files -blocks -locations
+
+11) How can you kill an application running on YARN?
+
+ solution:-> sudo yarn application -kill <application-ID>
+
+12) In MapReduce tasks, each reduce task writes its output to a file named part-r-nnnnn. Here nnnnn is the partition ID associated with the reduce task. Is it possible to ultimately merge these files? Explain your answer.
+
+ solution:-> Yes We can merge this file by using
+             hadoop fs -getmerge <file 1 file 2> <mergedsinglefile>
+
+
+14) How does a NameNode know that one of the DataNodes in a cluster is not functioning?
+   solution:-> After every three second datanode sends heartbeat signals to namenode. By that signal namenode knows that whether datanode is active or not
+
+15) How can you determine the number of map tasks and reduce tasks based on requirements?
+
+   solution:-> We determine no of map and reducer tasks on the basis logical split
+               Logical split=input split=No of mappers
+
+
+17)What are the differences between -copyFromLocal and -put command
+
+       solution:-> -copyFromLocal ===> here we have to give complete path of source file and and destination file
+
+                                    -put =====> Here we don't provide the complete path 
+
+
+
+
+
